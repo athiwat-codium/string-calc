@@ -13,7 +13,7 @@ import {Component, OnInit} from '@angular/core';
  *
  */
 
-function add(numbers: string, y: number): number {
+function add(numbers: string): number {
   const splitted = numbers.split(',', 100);
   const numbersplit = splitted.map(parseInt())
 
