@@ -1,27 +1,40 @@
-# StringCalc
+## Introduction
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.3.
+The purpose of this program is to determine the outcome of a tennis game according to scoring rules.
 
-## Development server
+## Rules
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
++ A game is won by the first player to have won at least four points in total and at least two points more than the opponent.
++ The running score of each game is described in a manner peculiar to tennis: scores from zero to three points are described as “love”, “fifteen”, “thirty”, and “forty” respectively.
++ If at least three points have been scored by each player, and the scores are equal, the score is “deuce”.
++ If at least three points have been scored by each side and a player has one more point than his opponent, the score of the game is “advantage” for the player in the lead.
 
-## Code scaffolding
+## Alternate explanations
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
++ Each player can have either of these points in one game 0 15 30 40
++ If you have 40 and you win the ball you win the game, however there are special rules.
++ If both have 40 the players are deuce. a. If the game is in deuce, the winner of a ball will have advantage and game ball. b. If the player with advantage wins the ball he wins the game c. If the player without advantage wins they are back at deuce.
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Program Structure
 
-## Running unit tests
+### Setup
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+The function updateGameScore() encapsulates the conditionals into an array
 
-## Running end-to-end tests
+### printScore() function
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+The printScore function is the main body of the program and contains two nested loops. 
+The first loop is concered with the case that the two scores are equal and then evaluates various sub cases to determine 
+if the conditions for love - love, fifteen - fifteen, thirty - thirty have been met. If none of those conditions are met the outcome is presumed to be a deuce
 
-## Further help
+The second nested set of statements consider the more complex cases where either player leads by 3 points or more, and determines which player meets such conditons.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+These two sets of loops test all possible conditions, cases with negative scores are considered and may break the programs logic
+
+
+### decideGameWinner() function
+
+The decideGameWinner function determines if the players have reached the conditions needed to win the game (lead of 2 or more), and prints the winning (leading) player.
+
