@@ -3,7 +3,7 @@
 //
 
 import { Add } from './main'
-import { expect} from 'chai';
+import { expect } from 'chai';
 import 'mocha'
 
 
