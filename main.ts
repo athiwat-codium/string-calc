@@ -1,15 +1,17 @@
 
 export function Add(numbers: string,): number{
 
-    /*
-    Add support for different delemiters via regular expression
-     */
+  var specialChars = "!@#$^&%*()+=-[]\/{}|:<>?,.";
 
-    var b = numbers.split(',').map(function(item) {
-        return parseInt(item, 10);
-    }).reduce(function(a,b){
-        return a+b
-    });
+  for (let c of specialChars) {
+    numbers = numbers.replace(new RegExp("\\" + c, "gi"), ",");
+  }
 
-    return b;
+  var b = numbers.split(',').map(function(item) {
+    return parseInt(item, 10);
+  }).reduce(function(a,b){
+    return a+b
+  });
+
+  return b;
 }
